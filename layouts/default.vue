@@ -158,7 +158,7 @@
         <!-- Contato -->
         <div class="space-y-3">
           <p class="section-label mb-4">Contato</p>
-          <p class="text-sm text-ink-300">📍 Av. Itaquera, 1102 – Parque Maria Luiza</p>
+          <p class="text-sm text-ink-300">📍 Av. Itaquera, 1102 –Jardim Maringa</p>
           <p class="text-sm text-ink-300">✉️ terreiroogumsetelancas@gmail.com</p>
           <a
             href="https://www.instagram.com/terreiro7lancas/"
@@ -173,7 +173,7 @@
             <div class="w-full h-36 rounded overflow-hidden border border-gold-400/20">
               <iframe
                 title="Localização"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-46.4985%2C-23.5525%2C-46.4935%2C-23.5480&layer=mapnik&marker=-23.5505%2C-46.4960"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-46.5160,-23.5550,-46.5110,-23.5520&layer=mapnik&marker=-23.55344,-46.51358"
                 class="w-full h-full"
               />
             </div>
