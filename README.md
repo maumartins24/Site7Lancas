@@ -125,3 +125,24 @@ const visibleTabs = [
 2. Importe no Vercel
 3. Em **Environment Variables**, adicione todas as variáveis do `.env`
 4. Deploy!
+
+## Nova coleção: `itens`
+
+```
+{
+  id: string (auto)
+  name: string
+  group: string
+  meta: string
+  ordem: number
+  createdAt: Timestamp
+}
+```
+
+Adicione às regras do Firestore:
+```
+match /itens/{doc} {
+  allow read: if true;
+  allow write: if true;
+}
+```
