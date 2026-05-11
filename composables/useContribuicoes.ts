@@ -1,20 +1,16 @@
 // composables/useContribuicoes.ts
-// CRUD de contribuições no Firestore
-// Coleção: "contribuicoes"
-// Documento: { id, itemId, nome, qty, createdAt }
-
 import {
   collection, doc,
-  addDoc, deleteDoc,
-  query, where, orderBy,
+  addDoc, updateDoc, deleteDoc,
+  query, orderBy,
   onSnapshot, Timestamp,
 } from 'firebase/firestore'
 
 export interface Contribuicao {
-  id?:       string
-  itemId:    string
-  nome:      string
-  qty:       string
+  id?:        string
+  itemId:     string
+  nome:       string
+  qty:        string
   createdAt?: Timestamp
 }
 
@@ -25,10 +21,8 @@ export function useContribuicoes() {
   const error         = ref<string | null>(null)
 
   const col = () => collection($db, 'contribuicoes')
-
   let unsubscribe: (() => void) | null = null
 
-  // Listener em tempo real — todos os itens de uma vez
   function subscribe() {
     loading.value = true
     const q = query(col(), orderBy('createdAt', 'asc'))
@@ -37,10 +31,7 @@ export function useContribuicoes() {
         contribuicoes.value = snap.docs.map(d => ({ id: d.id, ...d.data() } as Contribuicao))
         loading.value = false
       },
-      (err) => {
-        error.value = err.message
-        loading.value = false
-      }
+      (err) => { error.value = err.message; loading.value = false }
     )
   }
 
@@ -48,7 +39,6 @@ export function useContribuicoes() {
     if (unsubscribe) { unsubscribe(); unsubscribe = null }
   }
 
-  // Contribuições filtradas por item
   function forItem(itemId: string) {
     return computed(() => contribuicoes.value.filter(c => c.itemId === itemId))
   }
@@ -57,18 +47,17 @@ export function useContribuicoes() {
     await addDoc(col(), { ...c, createdAt: Timestamp.now() })
   }
 
+  async function updateContribuicao(id: string, data: Partial<Pick<Contribuicao, 'nome' | 'qty' | 'itemId'>>) {
+    await updateDoc(doc($db, 'contribuicoes', id), data)
+  }
+
   async function deleteContribuicao(id: string) {
     await deleteDoc(doc($db, 'contribuicoes', id))
   }
 
   return {
-    contribuicoes,
-    loading,
-    error,
-    subscribe,
-    unsubscribeAll,
-    forItem,
-    addContribuicao,
-    deleteContribuicao,
+    contribuicoes, loading, error,
+    subscribe, unsubscribeAll, forItem,
+    addContribuicao, updateContribuicao, deleteContribuicao,
   }
 }
