@@ -31,7 +31,7 @@
         <div class="relative max-w-3xl mx-auto">
           <div class="hero-label mb-4">Terreiro Ogum 7 Lanças</div>
           <h1 class="font-serif text-5xl md:text-7xl font-black text-white leading-none">
-            Agenda <span class="text-gold-400 italic">do Axé</span>
+            Agenda <span class="text-gold-400 italic"></span>
           </h1>
           <p class="mt-4 text-ink-400 text-base">Confira os próximos eventos, giras e encontros</p>
           <div class="flex flex-wrap justify-center gap-4 mt-6">
