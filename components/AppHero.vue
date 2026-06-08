@@ -14,7 +14,7 @@
         @canplay="videoReady = true"
         :class="{ 'opacity-0': !videoReady, 'opacity-100': videoReady }"
       >
-        <source src="/videos/hero.mp4" type="video/mp4" />
+        <source :src="videoSrc" type="video/mp4" />
       </video>
 
       <!-- Fallback enquanto não tem vídeo -->
@@ -103,9 +103,11 @@
 <script setup lang="ts">
 const videoLoaded = ref(false)
 const videoReady  = ref(false)
+const videoSrc    = ref('')
 
 onMounted(() => {
-  // Carrega o vídeo só no cliente após a página montar
+  // String atribuída em runtime — Rollup não tenta resolver como módulo
+  videoSrc.value    = '/videos/hero.mp4'
   videoLoaded.value = true
 })
 </script>
