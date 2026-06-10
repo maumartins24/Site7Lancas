@@ -5,45 +5,62 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    @apply font-sans bg-ink-900 text-ink-200;
+    @apply font-sans;
+    background-color: #ffffff;
+    color: #3366CC;
     transition: background-color 0.4s ease, color 0.4s ease;
   }
   h1, h2, h3, h4 { @apply font-serif; }
 }
 
 @layer components {
+
+  /* ── KENTE — mantém dourado/vermelho, troca o preto pelo branco ── */
   .kente {
     height: 5px;
     background: repeating-linear-gradient(
       90deg,
-      theme('colors.gold.400') 0px,   theme('colors.gold.400') 20px,
-      theme('colors.crimson.400') 20px, theme('colors.crimson.400') 27px,
-      theme('colors.gold.400') 27px,   theme('colors.gold.400') 40px,
-      theme('colors.ink.900') 40px,    theme('colors.ink.900') 44px
+      #D4A017 0px,  #D4A017 20px,
+      #C0392B 20px, #C0392B 27px,
+      #D4A017 27px, #D4A017 40px,
+      #3366CC 40px, #3366CC 44px
     );
   }
   .kente-thin {
     height: 2px;
     background: repeating-linear-gradient(
       90deg,
-      theme('colors.gold.400') 0px,    theme('colors.gold.400') 14px,
-      theme('colors.crimson.400') 14px, theme('colors.crimson.400') 18px,
-      theme('colors.gold.400') 18px,   theme('colors.gold.400') 28px,
-      theme('colors.ink.900') 28px,    theme('colors.ink.900') 30px
+      #D4A017 0px,  #D4A017 14px,
+      #C0392B 14px, #C0392B 18px,
+      #D4A017 18px, #D4A017 28px,
+      #3366CC 28px, #3366CC 30px
     );
   }
+
+  /* ── BOTÕES ── */
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-7 py-3.5 bg-gold-400 text-ink-900 font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-gold-600 hover:text-white;
+    @apply inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm tracking-widest uppercase transition-all duration-300;
+    background: #3366CC;
+    color: #ffffff;
     clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
   }
+  .btn-primary:hover { background: #2a52b8; }
+
   .btn-outline {
-    @apply inline-flex items-center gap-2 px-7 py-3.5 border border-gold-400 text-gold-400 font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-gold-400 hover:text-ink-900;
+    @apply inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm tracking-widest uppercase transition-all duration-300;
+    border: 1px solid #3366CC;
+    color: #3366CC;
+    background: transparent;
   }
+  .btn-outline:hover { background: #3366CC; color: #ffffff; }
+
   .section-label {
-    @apply text-[0.65rem] uppercase tracking-[0.3em] text-gold-400 font-bold font-sans;
+    @apply text-[0.65rem] uppercase tracking-[0.3em] font-bold font-sans;
+    color: #3366CC;
   }
 }
 
+/* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: theme('colors.gold.400'); border-radius: 2px; }
+::-webkit-scrollbar-track { background: #f0f4ff; }
+::-webkit-scrollbar-thumb { background: #3366CC; border-radius: 2px; }
