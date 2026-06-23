@@ -99,6 +99,7 @@
       <div v-if="adminModal"
         class="fixed inset-0 bg-ink-900/50 backdrop-blur-lg z-50 flex items-center justify-center p-4"
         @click.self="adminModal = false"
+        role="dialog" aria-label="Admin — Agenda"
       >
         <div class="bg-white border border-brand-200 w-full max-w-xl max-h-[92vh] overflow-y-auto shadow-xl">
           <div class="kente" />

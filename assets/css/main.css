@@ -16,7 +16,7 @@
 @layer components {
 
   /* ── KENTE — mantém dourado/vermelho, troca o preto pelo branco ── */
-  .kente {
+  .kente, .kente-bar {
     height: 5px;
     background: repeating-linear-gradient(
       90deg,
@@ -26,7 +26,7 @@
       #3366CC 40px, #3366CC 44px
     );
   }
-  .kente-thin {
+  .kente-thin, .kente-bar-thin {
     height: 2px;
     background: repeating-linear-gradient(
       90deg,

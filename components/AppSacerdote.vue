@@ -60,13 +60,13 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                   </svg>
                 </div>
-                <p class="text-gold-400/40 text-xs tracking-widest3 uppercase font-sans">Foto em breve</p>
+                <p class="text-gold-400/40 text-xs tracking-widest uppercase font-sans">Foto em breve</p>
                 <p class="text-ink-400/50 text-[0.65rem] font-mono">🔧 /images/sacerdote.jpg</p>
               </div>
 
               <!-- Overlay inferior com nome -->
               <div class="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/90 to-transparent">
-                <p class="text-gold-400 text-[0.6rem] uppercase tracking-widest3 mb-1">Sacerdote</p>
+                <p class="text-gold-400 text-[0.6rem] uppercase tracking-widest mb-1">Sacerdote</p>
                 <p class="text-white font-serif text-xl font-bold">Rodrigo Bertozzi</p>
               </div>
             </div>

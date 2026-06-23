@@ -157,6 +157,7 @@
       <div v-if="adminModal"
         class="fixed inset-0 bg-ink-900/50 backdrop-blur-lg z-50 flex items-center justify-center p-4"
         @click.self="adminModal = false"
+        role="dialog" aria-label="Admin — Limpeza"
       >
         <div class="bg-white border border-brand-200 shadow-xl w-full max-w-2xl max-h-[92vh] flex flex-col">
           <div class="kente shrink-0" />
