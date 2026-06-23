@@ -54,6 +54,24 @@
       <div class="max-w-7xl mx-auto px-6 py-12"><AppLimpeza /></div>
     </div>
 
+    <!-- ANIVERSARIANTES -->
+    <div v-show="currentTab === 'aniversariantes'">
+      <section class="page-hero adinkra-bg">
+        <div class="page-hero-overlay" />
+        <div class="relative max-w-3xl mx-auto text-center px-6">
+          <div class="hero-label mb-4">Terreiro Ogum 7 Lanças</div>
+          <h1 class="font-serif text-5xl md:text-6xl font-black text-ink-800 leading-none">
+            <span class="text-gold-400 italic">Aniversariantes</span>
+          </h1>
+          <p class="mt-4 text-ink-600 text-sm max-w-lg mx-auto leading-relaxed">
+            Celebre com a nossa família! Confira os aniversariantes do mês e os próximos.
+          </p>
+        </div>
+      </section>
+      <div class="kente" />
+      <div class="max-w-7xl mx-auto px-6 py-12"><AppAniversariantes /></div>
+    </div>
+
     <!-- CONQUISTAS -->
     <div v-show="currentTab === 'conquistas'" class="page-pad"><AppConquistas /></div>
 

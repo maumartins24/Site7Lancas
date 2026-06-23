@@ -158,6 +158,7 @@ const allItems = [
   { id: 'sacerdote',     icon: '⚔️', label: 'Sacerdote'     },
   { id: 'agenda',        icon: '📅', label: 'Agenda'        },
   { id: 'limpeza',       icon: '🧹', label: 'Limpeza'       },
+  { id: 'aniversariantes', icon: '🎂', label: 'Aniversariantes' },
   { id: 'conquistas',    icon: '🌟', label: 'Conquistas'    },
   { id: 'instagram',     icon: '📷', label: 'Instagram'     },
   { id: 'lojinha',       icon: '🛒', label: 'Lojinha'       },
