@@ -15,11 +15,11 @@
         <div class="page-hero-overlay" />
         <div class="relative max-w-3xl mx-auto text-center px-6">
           <div class="hero-label mb-4">Terreiro Ogum 7 Lanças</div>
-          <h1 class="font-serif text-5xl md:text-6xl font-black text-white leading-none">Agenda</h1>
-          <p class="mt-4 text-ink-400 text-sm">Confira os próximos eventos, giras e encontros</p>
+          <h1 class="font-serif text-5xl md:text-6xl font-black text-ink-800 leading-none">Agenda</h1>
+          <p class="mt-4 text-ink-600 text-sm">Confira os próximos eventos, giras e encontros</p>
           <div class="flex flex-wrap justify-center gap-4 mt-5">
             <div v-for="tipo in tipos" :key="tipo.id"
-              class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-ink-400">
+              class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-ink-500">
               <div class="w-2 h-2 rotate-45" :style="{ background: tipo.color }" />
               {{ tipo.label }}
             </div>
@@ -36,17 +36,17 @@
         <div class="page-hero-overlay" />
         <div class="relative max-w-3xl mx-auto text-center px-6">
           <div class="hero-label mb-4">Terreiro Ogum 7 Lanças</div>
-          <h1 class="font-serif text-5xl md:text-6xl font-black text-white leading-none">
+          <h1 class="font-serif text-5xl md:text-6xl font-black text-ink-800 leading-none">
             Escala de <span class="text-gold-400 italic">Limpeza</span>
           </h1>
-          <p class="mt-4 text-ink-400 text-sm max-w-lg mx-auto leading-relaxed">
+          <p class="mt-4 text-ink-600 text-sm max-w-lg mx-auto leading-relaxed">
             Confira os dias de limpeza, veja quem está na escala e confirme sua presença.
             Quem limpou na semana anterior não é escalado novamente.
           </p>
           <div class="flex flex-wrap justify-center gap-5 mt-5">
-            <span class="flex items-center gap-1.5 font-mono text-[9px] text-ink-400"><span class="w-2 h-2 rounded-full border border-ink-400 inline-block"/>Pendente</span>
-            <span class="flex items-center gap-1.5 font-mono text-[9px] text-gold-400"><span class="w-2 h-2 rounded-full bg-gold-400 inline-block"/>Confirmado</span>
-            <span class="flex items-center gap-1.5 font-mono text-[9px] text-green-400"><span class="w-2 h-2 rounded-full bg-green-400 inline-block"/>Limpou ✓</span>
+            <span class="flex items-center gap-1.5 font-mono text-[9px] text-ink-500"><span class="w-2 h-2 rounded-full border border-ink-500 inline-block"/>Pendente</span>
+            <span class="flex items-center gap-1.5 font-mono text-[9px] text-gold-600"><span class="w-2 h-2 rounded-full bg-gold-400 inline-block"/>Confirmado</span>
+            <span class="flex items-center gap-1.5 font-mono text-[9px] text-green-600"><span class="w-2 h-2 rounded-full bg-green-500 inline-block"/>Limpou ✓</span>
           </div>
         </div>
       </section>
@@ -77,10 +77,10 @@
         <div class="page-hero-overlay" />
         <div class="relative max-w-3xl mx-auto text-center px-6">
           <div class="hero-label mb-4">Família do Terreiro</div>
-          <h1 class="font-serif text-5xl md:text-6xl font-black text-white leading-none">
-            Contribuições <span class="text-green-400 italic">do Terreiro</span>
+          <h1 class="font-serif text-5xl md:text-6xl font-black text-ink-800 leading-none">
+            Contribuições <span class="text-green-600 italic">do Terreiro</span>
           </h1>
-          <p class="mt-4 text-ink-400 text-sm max-w-lg mx-auto leading-relaxed">
+          <p class="mt-4 text-ink-600 text-sm max-w-lg mx-auto leading-relaxed">
             Cada família pode se cadastrar para levar os materiais que o Terreiro precisa.
             Clique no <strong class="text-gold-400">＋</strong> do item e coloque seu nome e quantidade.
           </p>
@@ -118,7 +118,7 @@ onUnmounted(() => unsubTipos())
   @apply relative pt-28 pb-14 px-6 text-center overflow-hidden;
 }
 .page-hero-overlay {
-  @apply absolute inset-0 bg-gradient-to-b from-transparent to-ink-900/50 pointer-events-none;
+  @apply absolute inset-0 bg-gradient-to-b from-transparent to-white/50 pointer-events-none;
 }
 
 .hero-label {

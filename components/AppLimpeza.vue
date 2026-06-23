@@ -19,7 +19,7 @@
 
     <!-- ══ LOADING ══ -->
     <div v-if="loading" class="space-y-3">
-      <div v-for="i in 4" :key="i" class="h-20 bg-ink-800 animate-pulse" />
+      <div v-for="i in 4" :key="i" class="h-20 bg-ink-100 animate-pulse" />
     </div>
 
     <template v-else>
@@ -28,12 +28,12 @@
       <div class="mb-14">
         <div class="flex items-center gap-3 mb-5">
           <div class="w-[3px] h-5 bg-gold-400" />
-          <h3 class="font-serif text-2xl font-bold text-white">Escala do Mês</h3>
-          <div class="flex-1 h-px bg-ink-700" />
+          <h3 class="font-serif text-2xl font-bold text-ink-800">Escala do Mês</h3>
+          <div class="flex-1 h-px bg-brand-200" />
         </div>
 
-        <div v-if="!proximos.length" class="py-10 text-center border border-dashed border-gold-400/20 text-ink-400">
-          <p class="font-serif text-lg text-ink-200 mb-1">Nenhuma limpeza agendada 🧹</p>
+        <div v-if="!proximos.length" class="py-10 text-center border border-dashed border-gold-400/20 text-ink-500">
+          <p class="font-serif text-lg text-ink-600 mb-1">Nenhuma limpeza agendada 🧹</p>
           <p class="text-sm">O admin ainda não adicionou os dias.</p>
         </div>
 
@@ -49,9 +49,9 @@
 
             <!-- Data -->
             <div class="dia-date-col">
-              <div class="font-serif text-3xl font-black text-white leading-none">{{ formatDay(dia.date) }}</div>
+              <div class="font-serif text-3xl font-black text-ink-800 leading-none">{{ formatDay(dia.date) }}</div>
               <div class="font-mono text-[9px] uppercase tracking-widest text-ink-400">{{ formatMonth(dia.date) }}</div>
-              <div class="font-mono text-[8px] text-ink-500 mt-1">{{ formatWeekday(dia.date) }}</div>
+              <div class="font-mono text-[8px] text-ink-400/60 mt-1">{{ formatWeekday(dia.date) }}</div>
             </div>
 
             <!-- Corpo -->
@@ -62,9 +62,9 @@
                   v-for="e in escalasDoDia(dia.id!).value" :key="e.id"
                   class="escala-chip"
                   :class="{
-                    'border-green-500/60 bg-green-500/10 text-green-300': e.limpou,
-                    'border-gold-400/50 bg-gold-400/10 text-gold-300': e.confirmado && !e.limpou,
-                    'border-ink-600 bg-ink-800 text-ink-300': !e.confirmado && !e.limpou,
+                    'border-green-500/60 bg-green-500/10 text-green-600': e.limpou,
+                    'border-gold-400/50 bg-gold-400/10 text-gold-600': e.confirmado && !e.limpou,
+                    'border-brand-200 bg-white text-ink-600': !e.confirmado && !e.limpou,
                   }"
                 >
                   <span v-if="e.limpou">✓</span>
@@ -83,29 +83,29 @@
                 <!-- Vagas livres -->
                 <div
                   v-for="i in vagasLivres(dia)" :key="'vaga-'+i"
-                  class="escala-chip border-dashed border-ink-600 text-ink-600"
+                  class="escala-chip border-dashed border-brand-200 text-ink-400"
                 >
                   + vaga livre
                 </div>
               </div>
 
-              <div v-if="dia.observacao" class="font-mono text-[10px] text-ink-500 mt-1">
+              <div v-if="dia.observacao" class="font-mono text-[10px] text-ink-400/70 mt-1">
                 📝 {{ dia.observacao }}
               </div>
 
               <!-- Legenda -->
               <div class="flex gap-3 mt-2">
-                <span class="font-mono text-[8px] text-ink-600">○ pendente &nbsp; ● confirmado &nbsp; ✓ limpou</span>
+                <span class="font-mono text-[8px] text-ink-400/60">○ pendente &nbsp; ● confirmado &nbsp; ✓ limpou</span>
               </div>
             </div>
 
             <!-- Vagas badge -->
-            <div class="px-4 text-center hidden sm:flex flex-col justify-center shrink-0 border-l border-ink-700">
+            <div class="px-4 text-center hidden sm:flex flex-col justify-center shrink-0 border-l border-brand-200">
               <div class="font-serif text-xl font-black"
                 :class="escalaCompleta(dia) ? 'text-green-400' : vagasLivres(dia) > 0 ? 'text-gold-400' : 'text-crimson-400'">
                 {{ escalasDoDia(dia.id!).value.length }}/{{ dia.vagas }}
               </div>
-              <div class="font-mono text-[9px] text-ink-500">pessoas</div>
+              <div class="font-mono text-[9px] text-ink-400/70">pessoas</div>
             </div>
           </div>
         </div>
@@ -114,24 +114,24 @@
       <!-- ══ HISTÓRICO ══ -->
       <div>
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-[3px] h-5 bg-ink-600" />
-          <h3 class="font-serif text-2xl font-bold text-white">Histórico</h3>
-          <div class="flex-1 h-px bg-ink-700" />
+          <div class="w-[3px] h-5 bg-brand-200" />
+          <h3 class="font-serif text-2xl font-bold text-ink-800">Histórico</h3>
+          <div class="flex-1 h-px bg-brand-200" />
         </div>
 
-        <div v-if="!historico.length" class="py-8 text-center text-ink-600 font-mono text-xs uppercase tracking-widest">
+        <div v-if="!historico.length" class="py-8 text-center text-ink-400 font-mono text-xs uppercase tracking-widest">
           Nenhum histórico ainda
         </div>
 
         <div v-else class="flex flex-col gap-[3px]">
           <div
             v-for="dia in historico" :key="dia.id"
-            class="flex items-center gap-0 bg-ink-800/50 border border-ink-700 overflow-hidden"
+            class="flex items-center gap-0 bg-ink-100 border border-brand-200 overflow-hidden"
           >
-            <div class="w-[3px] shrink-0 self-stretch bg-ink-600" />
-            <div class="px-4 py-3 border-r border-ink-700 text-center shrink-0">
-              <div class="font-serif text-xl font-black text-ink-400">{{ formatDay(dia.date) }}</div>
-              <div class="font-mono text-[8px] uppercase text-ink-600">{{ formatMonth(dia.date) }}</div>
+            <div class="w-[3px] shrink-0 self-stretch bg-brand-200" />
+            <div class="px-4 py-3 border-r border-brand-200 text-center shrink-0">
+              <div class="font-serif text-xl font-black text-ink-600">{{ formatDay(dia.date) }}</div>
+              <div class="font-mono text-[8px] uppercase text-ink-400">{{ formatMonth(dia.date) }}</div>
             </div>
             <div class="flex-1 px-4 py-3">
               <div class="flex flex-wrap gap-1.5">
@@ -140,11 +140,11 @@
                     v-for="e in dia.equipe" :key="e.id"
                     class="font-mono text-[9px] px-2 py-0.5 border"
                     :class="e.limpou
-                      ? 'border-green-500/40 text-green-400 bg-green-500/10'
-                      : 'border-ink-600 text-ink-500'"
+                      ? 'border-green-500/40 text-green-600 bg-green-500/10'
+                      : 'border-brand-200 text-ink-400'"
                   >{{ e.limpou ? '✓' : '✗' }} {{ e.nome }}</span>
                 </template>
-                <span v-else class="text-xs text-ink-600 italic">Sem registro</span>
+                <span v-else class="text-xs text-ink-400 italic">Sem registro</span>
               </div>
             </div>
           </div>
@@ -155,13 +155,13 @@
     <!-- ══ MODAL ADMIN ══ -->
     <Transition name="fade">
       <div v-if="adminModal"
-        class="fixed inset-0 bg-ink-900/90 backdrop-blur-lg z-50 flex items-center justify-center p-4"
+        class="fixed inset-0 bg-ink-900/50 backdrop-blur-lg z-50 flex items-center justify-center p-4"
         @click.self="adminModal = false"
       >
-        <div class="bg-ink-800 border border-gold-400/25 w-full max-w-2xl max-h-[92vh] flex flex-col">
+        <div class="bg-white border border-brand-200 shadow-xl w-full max-w-2xl max-h-[92vh] flex flex-col">
           <div class="kente shrink-0" />
-          <div class="flex items-center justify-between px-6 py-4 border-b border-ink-700 shrink-0">
-            <h3 class="font-serif text-xl text-white">Admin — Limpeza</h3>
+          <div class="flex items-center justify-between px-6 py-4 border-b border-brand-200 shrink-0">
+            <h3 class="font-serif text-xl text-ink-800">Admin — Limpeza</h3>
             <button @click="adminModal = false" class="text-ink-400 hover:text-gold-400 transition-colors text-xl">✕</button>
           </div>
 
@@ -169,7 +169,7 @@
 
             <!-- LOGIN -->
             <div v-if="!isAdmin" class="flex flex-col gap-4 max-w-sm mx-auto">
-              <p class="text-sm text-ink-400 text-center">Digite a senha para gerenciar a escala.</p>
+              <p class="text-sm text-ink-500 text-center">Digite a senha para gerenciar a escala.</p>
               <div v-if="loginError" class="font-mono text-xs text-crimson-400 p-2 border border-crimson-400/30 bg-crimson-400/10">Senha incorreta.</div>
               <div class="flex flex-col gap-1.5">
                 <label class="input-label">Senha</label>
@@ -180,7 +180,7 @@
 
             <!-- PAINEL ADMIN -->
             <template v-else>
-              <div class="flex border-b border-ink-700 mb-6 overflow-x-auto">
+              <div class="flex border-b border-brand-200 mb-6 overflow-x-auto">
                 <button v-for="t in adminTabs" :key="t.val"
                   class="admin-tab" :class="{ active: adminTab === t.val }"
                   @click="adminTab = t.val; resetForms()">
@@ -192,7 +192,7 @@
               <div v-if="adminTab === 'dias'" class="flex flex-col gap-6">
 
                 <!-- Form dia -->
-                <div class="border border-gold-400/20 bg-ink-900 p-4 flex flex-col gap-3">
+                <div class="border border-brand-200 bg-ink-100 p-4 flex flex-col gap-3">
                   <h4 class="font-mono text-[10px] uppercase tracking-widest text-gold-400">
                     {{ editingDiaId ? 'Editar Dia' : 'Adicionar Dia de Limpeza' }}
                   </h4>
@@ -204,9 +204,9 @@
                     </div>
                     <div class="flex flex-col gap-1.5">
                       <label class="input-label">Nº de vagas *</label>
-                      <div class="flex border border-ink-600 overflow-hidden">
+                      <div class="flex border border-brand-200 overflow-hidden">
                         <button type="button" class="count-btn" @click="diaForm.vagas = Math.max(1, diaForm.vagas - 1)">−</button>
-                        <span class="flex-1 text-center font-mono text-sm text-white bg-ink-900 py-2.5">{{ diaForm.vagas }}</span>
+                        <span class="flex-1 text-center font-mono text-sm text-ink-800 bg-ink-100 py-2.5">{{ diaForm.vagas }}</span>
                         <button type="button" class="count-btn" @click="diaForm.vagas++">+</button>
                       </div>
                     </div>
@@ -227,17 +227,17 @@
 
                 <!-- Lista de dias -->
                 <div>
-                  <p class="font-mono text-[10px] uppercase tracking-widest text-ink-400 mb-3">Dias cadastrados</p>
-                  <div v-if="!dias.length" class="text-ink-600 text-sm font-mono">Nenhum dia cadastrado.</div>
+                  <p class="font-mono text-[10px] uppercase tracking-widest text-ink-500 mb-3">Dias cadastrados</p>
+                  <div v-if="!dias.length" class="text-ink-400 text-sm font-mono">Nenhum dia cadastrado.</div>
                   <div v-else class="flex flex-col gap-[3px]">
                     <div
                       v-for="dia in [...dias].sort((a,b) => a.date.localeCompare(b.date))"
                       :key="dia.id"
-                      class="flex items-center gap-3 bg-ink-900 border border-ink-700 px-4 py-3"
+                      class="flex items-center gap-3 bg-ink-100 border border-brand-200 px-4 py-3"
                     >
                       <div class="flex-1">
-                        <div class="text-sm font-bold text-white">{{ formatDateFull(dia.date) }}</div>
-                        <div class="font-mono text-[10px] text-ink-400 mt-0.5">
+                        <div class="text-sm font-bold text-ink-800">{{ formatDateFull(dia.date) }}</div>
+                        <div class="font-mono text-[10px] text-ink-500 mt-0.5">
                           {{ dia.vagas }} vaga(s)
                           <span v-if="dia.observacao"> · {{ dia.observacao }}</span>
                           <span class="ml-2 text-gold-400/70">{{ escalasDoDia(dia.id!).value.length }} escalados</span>
@@ -256,7 +256,7 @@
               <div v-if="adminTab === 'escala'" class="flex flex-col gap-4">
 
                 <!-- Form escala -->
-                <div class="border border-gold-400/20 bg-ink-900 p-4 flex flex-col gap-3">
+                <div class="border border-brand-200 bg-ink-100 p-4 flex flex-col gap-3">
                   <h4 class="font-mono text-[10px] uppercase tracking-widest text-gold-400">
                     {{ editingEscalaId ? 'Editar Pessoa na Escala' : 'Adicionar Pessoa à Escala' }}
                   </h4>
@@ -308,12 +308,12 @@
                       {{ formatDateFull(dia.date) }}
                     </option>
                   </select>
-                  <button v-if="filtroEscalaDiaId" class="px-3 font-mono text-[10px] border border-ink-600 text-ink-400 hover:border-gold-400 hover:text-gold-400 transition-colors uppercase"
+                  <button v-if="filtroEscalaDiaId" class="px-3 font-mono text-[10px] border border-brand-200 text-ink-400 hover:border-gold-400 hover:text-gold-400 transition-colors uppercase"
                     @click="filtroEscalaDiaId = ''">Limpar</button>
                 </div>
 
                 <!-- Lista de escalas -->
-                <div v-if="!escalasFiltradas.length" class="py-6 text-center text-ink-600 font-mono text-xs uppercase">
+                <div v-if="!escalasFiltradas.length" class="py-6 text-center text-ink-400 font-mono text-xs uppercase">
                   Nenhuma escala encontrada
                 </div>
 
@@ -321,18 +321,18 @@
                   <div v-for="[diaId, grupo] in escalasPorDia" :key="diaId">
                     <div class="flex items-center gap-2 mb-2">
                       <div class="w-[3px] h-4 bg-gold-400 shrink-0" />
-                      <span class="font-serif text-sm font-bold text-white">{{ formatDateFull(diaId) }}</span>
-                      <span class="font-mono text-[9px] text-ink-500">{{ grupo.length }} pessoas</span>
+                      <span class="font-serif text-sm font-bold text-ink-800">{{ formatDateFull(diaId) }}</span>
+                      <span class="font-mono text-[9px] text-ink-400/70">{{ grupo.length }} pessoas</span>
                     </div>
                     <div class="flex flex-col gap-[3px]">
                       <div
                         v-for="e in grupo" :key="e.id"
-                        class="flex items-center gap-3 bg-ink-900 border border-ink-700 px-4 py-3"
+                        class="flex items-center gap-3 bg-ink-100 border border-brand-200 px-4 py-3"
                         :class="{ 'border-green-500/30': e.limpou }"
                       >
                         <div class="flex-1 min-w-0">
                           <div class="flex items-center gap-2">
-                            <span class="text-sm font-medium text-white truncate">{{ e.nome }}</span>
+                            <span class="text-sm font-medium text-ink-800 truncate">{{ e.nome }}</span>
                             <span v-if="e.limpou" class="font-mono text-[8px] px-1.5 py-0.5 bg-green-500/20 text-green-400 border border-green-500/30">LIMPOU</span>
                             <span v-else-if="e.confirmado" class="font-mono text-[8px] px-1.5 py-0.5 bg-gold-400/15 text-gold-400 border border-gold-400/30">CONFIRMADO</span>
                           </div>
@@ -341,7 +341,7 @@
                           <!-- Toggle limpou -->
                           <button
                             class="icon-btn"
-                            :class="e.limpou ? 'border-green-500 text-green-400' : 'border-ink-600 text-ink-400 hover:border-green-500 hover:text-green-400'"
+                            :class="e.limpou ? 'border-green-500 text-green-600' : 'border-brand-200 text-ink-400 hover:border-green-500 hover:text-green-600'"
                             :title="e.limpou ? 'Desfazer limpeza' : 'Marcar como limpou'"
                             @click="toggleLimpou(e.id!, !e.limpou)"
                           >✓</button>
@@ -355,7 +355,7 @@
               </div>
 
               <div class="mt-6 flex justify-end">
-                <button @click="doLogout" class="text-ink-600 font-mono text-[10px] hover:text-ink-400 transition-colors">Sair do admin</button>
+                <button @click="doLogout" class="text-ink-400 font-mono text-[10px] hover:text-ink-600 transition-colors">Sair do admin</button>
               </div>
             </template>
           </div>
@@ -542,11 +542,11 @@ onUnmounted(() => unsubscribeAll())
 </script>
 
 <style scoped>
-.summary-card  { @apply bg-ink-800 border border-ink-700 p-5 text-center; }
-.summary-label { @apply font-mono text-[9px] uppercase tracking-widest text-ink-400 mt-1; }
+.summary-card  { @apply bg-ink-100 border border-brand-200 p-5 text-center; }
+.summary-label { @apply font-mono text-[9px] uppercase tracking-widest text-ink-500 mt-1; }
 
-.dia-card { @apply flex bg-ink-800 border border-ink-700 overflow-hidden transition-colors hover:border-gold-400/20; }
-.dia-date-col { @apply px-4 py-4 border-r border-ink-700 text-center flex flex-col justify-center shrink-0 min-w-[64px]; }
+.dia-card { @apply flex bg-ink-100 border border-brand-200 overflow-hidden transition-colors hover:border-gold-400/30; }
+.dia-date-col { @apply px-4 py-4 border-r border-brand-200 text-center flex flex-col justify-center shrink-0 min-w-[64px]; }
 
 .escala-chip {
   @apply inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wide px-2.5 py-1 border rounded-none transition-all;
@@ -554,20 +554,20 @@ onUnmounted(() => unsubscribeAll())
 
 .input-label { @apply font-mono text-[10px] uppercase tracking-widest text-gold-400; }
 .input-field {
-  @apply bg-ink-900 border border-ink-600 text-white font-mono text-sm px-3 py-2.5 outline-none w-full transition-colors focus:border-gold-400;
+  @apply bg-ink-100 border border-brand-200 text-ink-800 font-mono text-sm px-3 py-2.5 outline-none w-full transition-colors focus:border-gold-400;
   appearance: none;
 }
 select.input-field {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A017' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px;
 }
-.btn-gold   { @apply bg-gold-400 text-ink-900 border-none font-mono text-[11px] uppercase tracking-widest py-3 px-6 cursor-pointer font-medium transition-all hover:bg-gold-200 disabled:opacity-50 disabled:cursor-not-allowed; }
+.btn-gold   { @apply bg-gold-400 text-white border-none font-mono text-[11px] uppercase tracking-widest py-3 px-6 cursor-pointer font-medium transition-all hover:bg-gold-200 disabled:opacity-50 disabled:cursor-not-allowed; }
 .btn-danger { @apply bg-transparent text-crimson-400 border border-crimson-400/30 font-mono text-[10px] uppercase tracking-widest py-2 px-4 cursor-pointer transition-all hover:bg-crimson-400 hover:text-white; }
-.admin-tab  { @apply font-mono text-[10px] uppercase tracking-widest px-4 py-3 bg-none border-none text-ink-400 cursor-pointer border-b-2 border-transparent -mb-px transition-all whitespace-nowrap hover:text-ink-200; }
+.admin-tab  { @apply font-mono text-[10px] uppercase tracking-widest px-4 py-3 bg-none border-none text-ink-500 cursor-pointer border-b-2 border-transparent -mb-px transition-all whitespace-nowrap hover:text-ink-600; }
 .admin-tab.active { @apply text-gold-400 border-gold-400; }
 .icon-btn        { @apply w-7 h-7 flex items-center justify-center border text-xs cursor-pointer transition-all shrink-0; }
-.icon-btn.edit   { @apply border-ink-600 text-ink-400 hover:border-gold-400 hover:text-gold-400; }
-.icon-btn.del    { @apply border-ink-600 text-ink-400 hover:border-crimson-400 hover:text-crimson-400; }
+.icon-btn.edit   { @apply border-brand-200 text-ink-500 hover:border-gold-400 hover:text-gold-400; }
+.icon-btn.del    { @apply border-brand-200 text-ink-500 hover:border-crimson-400 hover:text-crimson-400; }
 .count-btn       { @apply w-8 bg-none border-none text-gold-400 text-lg cursor-pointer transition-colors hover:bg-gold-400/15; }
 
 .fade-enter-active, .fade-leave-active { transition: opacity 0.3s; }

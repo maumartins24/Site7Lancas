@@ -19,7 +19,7 @@
 
     <!-- ══ LOADING ══ -->
     <div v-if="loadingItens || loadingContribs" class="space-y-3">
-      <div v-for="i in 6" :key="i" class="h-16 bg-ink-800 animate-pulse" />
+      <div v-for="i in 6" :key="i" class="h-16 bg-ink-100 animate-pulse" />
     </div>
 
     <!-- ══ LISTA DE ITENS ══ -->
@@ -27,8 +27,8 @@
       <div v-for="[groupName, groupItens] in groupedItens" :key="groupName" class="mb-10">
 
         <div class="flex items-center gap-3 mb-3">
-          <h3 class="font-serif text-xl font-bold text-white">{{ groupName }}</h3>
-          <div class="flex-1 h-px bg-ink-700" />
+          <h3 class="font-serif text-xl font-bold text-ink-800">{{ groupName }}</h3>
+          <div class="flex-1 h-px bg-brand-200" />
         </div>
 
         <div class="flex flex-col gap-[3px]">
@@ -42,8 +42,8 @@
 
             <div class="item-header" @click="toggleForm(item.id!)">
               <div class="flex-1 min-w-0 p-4">
-                <div class="font-serif text-base font-bold text-white">{{ item.name }}</div>
-                <div class="font-mono text-[10px] text-ink-400 mt-0.5">Meta: {{ item.meta }}</div>
+                <div class="font-serif text-base font-bold text-ink-800">{{ item.name }}</div>
+                <div class="font-mono text-[10px] text-ink-500 mt-0.5">Meta: {{ item.meta }}</div>
                 <div v-if="contribsForItem(item.id!).length" class="flex flex-wrap gap-1.5 mt-2">
                   <span
                     v-for="c in contribsForItem(item.id!)" :key="c.id"
@@ -57,12 +57,12 @@
                 </div>
               </div>
 
-              <div class="flex items-center shrink-0 border-l border-ink-700">
+              <div class="flex items-center shrink-0 border-l border-brand-200">
                 <div class="px-4 text-center hidden sm:block">
-                  <div class="font-serif text-lg font-black" :class="contribsForItem(item.id!).length ? 'text-green-400' : 'text-ink-600'">
+                  <div class="font-serif text-lg font-black" :class="contribsForItem(item.id!).length ? 'text-green-600' : 'text-ink-400'">
                     {{ contribsForItem(item.id!).length ? '✓' : '—' }}
                   </div>
-                  <div class="font-mono text-[9px] text-ink-500">{{ contribsForItem(item.id!).length }} contrib.</div>
+                  <div class="font-mono text-[9px] text-ink-400/70">{{ contribsForItem(item.id!).length }} contrib.</div>
                 </div>
                 <button class="item-add-btn" :class="{ 'text-green-400': contribsForItem(item.id!).length }">
                   {{ openForm === item.id ? '✕' : '＋' }}
@@ -98,7 +98,7 @@
                 <div v-if="contribsForItem(item.id!).length" class="flex flex-col gap-1">
                   <div v-for="c in contribsForItem(item.id!)" :key="c.id" class="contrib-row">
                     <template v-if="editingContribId !== c.id">
-                      <span class="flex-1 text-sm text-white font-medium truncate">{{ c.nome }}</span>
+                      <span class="flex-1 text-sm text-ink-800 font-medium truncate">{{ c.nome }}</span>
                       <span class="font-mono text-xs text-green-400 shrink-0 mx-3">{{ c.qty }}</span>
                       <div class="flex gap-1 shrink-0">
                         <button class="icon-btn edit" @click.stop="startEditContrib(c)" title="Editar">✎</button>
@@ -127,13 +127,13 @@
     <!-- ══ MODAL ADMIN ══ -->
     <Transition name="fade">
       <div v-if="adminModal"
-        class="fixed inset-0 bg-ink-900/90 backdrop-blur-lg z-50 flex items-center justify-center p-4"
+        class="fixed inset-0 bg-ink-900/50 backdrop-blur-lg z-50 flex items-center justify-center p-4"
         @click.self="adminModal = false"
       >
-        <div class="bg-ink-800 border border-gold-400/25 w-full max-w-2xl max-h-[92vh] flex flex-col">
+        <div class="bg-white border border-brand-200 shadow-xl w-full max-w-2xl max-h-[92vh] flex flex-col">
           <div class="kente shrink-0" />
-          <div class="flex items-center justify-between px-6 py-4 border-b border-ink-700 shrink-0">
-            <h3 class="font-serif text-xl text-white">Admin — Contribuições</h3>
+          <div class="flex items-center justify-between px-6 py-4 border-b border-brand-200 shrink-0">
+            <h3 class="font-serif text-xl text-ink-800">Admin — Contribuições</h3>
             <button @click="adminModal = false" class="text-ink-400 hover:text-gold-400 transition-colors text-xl leading-none">✕</button>
           </div>
 
@@ -141,7 +141,7 @@
 
             <!-- LOGIN -->
             <div v-if="!isAdmin" class="flex flex-col gap-4 max-w-sm mx-auto">
-              <p class="text-sm text-ink-400 text-center">Digite a senha para acessar o painel.</p>
+              <p class="text-sm text-ink-500 text-center">Digite a senha para acessar o painel.</p>
               <div v-if="loginError" class="font-mono text-xs text-crimson-400 p-2 border border-crimson-400/30 bg-crimson-400/10">Senha incorreta.</div>
               <div class="flex flex-col gap-1.5">
                 <label class="input-label">Senha</label>
@@ -152,7 +152,7 @@
 
             <!-- PAINEL ADMIN -->
             <template v-else>
-              <div class="flex border-b border-ink-700 mb-6 overflow-x-auto">
+              <div class="flex border-b border-brand-200 mb-6 overflow-x-auto">
                 <button v-for="t in adminTabs" :key="t.val"
                   class="admin-tab" :class="{ active: adminTab === t.val }"
                   @click="switchAdminTab(t.val)">
@@ -164,7 +164,7 @@
               <div v-if="adminTab === 'itens'" class="flex flex-col gap-6">
 
                 <!-- Form novo item -->
-                <div class="border border-gold-400/20 bg-ink-900 p-4 flex flex-col gap-3">
+                <div class="border border-brand-200 bg-ink-100 p-4 flex flex-col gap-3">
                   <h4 class="font-mono text-[10px] uppercase tracking-widest text-gold-400">
                     {{ editingItemId ? 'Editar Item' : 'Novo Item da Lista' }}
                   </h4>
@@ -189,12 +189,12 @@
                         class="font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 border transition-all duration-150"
                         :class="itemForm.group === g
                           ? 'border-gold-400 bg-gold-400/15 text-gold-400'
-                          : 'border-ink-600 text-ink-400 hover:border-ink-400'"
+                          : 'border-brand-200 text-ink-400 hover:border-ink-400'"
                         @click="itemForm.group = g"
                       >{{ g }}</button>
                       <button
                         type="button"
-                        class="font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 border border-dashed border-ink-600 text-ink-500 hover:border-gold-400 hover:text-gold-400 transition-all duration-150"
+                        class="font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 border border-dashed border-brand-200 text-ink-500 hover:border-gold-400 hover:text-gold-400 transition-all duration-150"
                         @click="itemForm.group = ''"
                         title="Novo grupo"
                       >＋ Novo grupo</button>
@@ -220,12 +220,12 @@
                   <div v-else class="flex flex-col gap-[3px]">
                     <div
                       v-for="item in itens" :key="item.id"
-                      class="flex items-center gap-3 bg-ink-900 border border-ink-700 px-4 py-3"
+                      class="flex items-center gap-3 bg-ink-100 border border-brand-200 px-4 py-3"
                       :class="{ 'border-gold-400/40': editingItemId === item.id }"
                     >
                       <div class="flex-1 min-w-0">
-                        <div class="text-sm font-bold text-white truncate">{{ item.name }}</div>
-                        <div class="font-mono text-[9px] text-ink-400 mt-0.5">
+                        <div class="text-sm font-bold text-ink-800 truncate">{{ item.name }}</div>
+                        <div class="font-mono text-[9px] text-ink-500 mt-0.5">
                           {{ item.group }} · {{ item.meta }}
                           <span class="ml-2 text-green-400/70">{{ contribsForItem(item.id!).length }} contrib.</span>
                         </div>
@@ -243,7 +243,7 @@
               <div v-if="adminTab === 'contribs'" class="flex flex-col gap-4">
 
                 <!-- Adicionar nova contribuição -->
-                <div class="border border-gold-400/20 bg-ink-900 p-4 flex flex-col gap-3">
+                <div class="border border-brand-200 bg-ink-100 p-4 flex flex-col gap-3">
                   <h4 class="font-mono text-[10px] uppercase tracking-widest text-gold-400">
                     {{ adminEditingId ? 'Editar Contribuição' : 'Nova Contribuição' }}
                   </h4>
@@ -288,12 +288,12 @@
                     </optgroup>
                   </select>
                   <button v-if="filterItemId"
-                    class="font-mono text-[10px] uppercase px-3 border border-ink-600 text-ink-400 hover:border-gold-400 hover:text-gold-400 transition-colors whitespace-nowrap"
+                    class="font-mono text-[10px] uppercase px-3 border border-brand-200 text-ink-400 hover:border-gold-400 hover:text-gold-400 transition-colors whitespace-nowrap"
                     @click="filterItemId = ''">Limpar</button>
                 </div>
 
                 <!-- Lista de contribuições -->
-                <div v-if="!filteredContribs.length" class="py-8 text-center text-ink-600 font-mono text-xs uppercase tracking-widest">
+                <div v-if="!filteredContribs.length" class="py-8 text-center text-ink-400 font-mono text-xs uppercase tracking-widest">
                   Nenhuma contribuição encontrada
                 </div>
 
@@ -301,16 +301,16 @@
                   <div v-for="[itemId, contribs] in contribsByItem" :key="itemId">
                     <div class="flex items-center gap-2 mb-2">
                       <div class="w-[3px] h-4 bg-gold-400 shrink-0" />
-                      <span class="font-serif text-sm font-bold text-white">{{ itemNameById(itemId) }}</span>
-                      <span class="font-mono text-[9px] text-ink-500">{{ contribs.length }} contrib.</span>
+                      <span class="font-serif text-sm font-bold text-ink-800">{{ itemNameById(itemId) }}</span>
+                      <span class="font-mono text-[9px] text-ink-400/70">{{ contribs.length }} contrib.</span>
                     </div>
                     <div class="flex flex-col gap-[3px]">
                       <div v-for="c in contribs" :key="c.id"
-                        class="flex items-center gap-3 bg-ink-900 border border-ink-700 px-4 py-3 transition-colors"
+                        class="flex items-center gap-3 bg-ink-100 border border-brand-200 px-4 py-3 transition-colors"
                         :class="{ 'border-gold-400/40': adminEditingId === c.id }"
                       >
                         <div class="flex-1 min-w-0">
-                          <div class="text-sm text-white font-medium truncate">{{ c.nome }}</div>
+                          <div class="text-sm text-ink-800 font-medium truncate">{{ c.nome }}</div>
                           <div class="font-mono text-[10px] text-green-400 mt-0.5">{{ c.qty }}</div>
                         </div>
                         <div class="flex gap-1.5 shrink-0">
@@ -324,7 +324,7 @@
               </div>
 
               <div class="mt-8 flex justify-end">
-                <button @click="doLogout" class="text-ink-600 font-mono text-[10px] hover:text-ink-400 transition-colors">Sair do admin</button>
+                <button @click="doLogout" class="text-ink-400 font-mono text-[10px] hover:text-ink-600 transition-colors">Sair do admin</button>
               </div>
             </template>
           </div>
@@ -545,43 +545,43 @@ onUnmounted(() => { unsubItens(); unsubContribs() })
 </script>
 
 <style scoped>
-.summary-card  { @apply bg-ink-800 border border-ink-700 p-5 text-center; }
-.summary-label { @apply font-mono text-[9px] uppercase tracking-widest text-ink-400 mt-1; }
+.summary-card  { @apply bg-ink-100 border border-brand-200 p-5 text-center; }
+.summary-label { @apply font-mono text-[9px] uppercase tracking-widest text-ink-500 mt-1; }
 
-.item-card       { @apply flex bg-ink-800 border border-ink-700 overflow-hidden transition-colors duration-200 hover:border-gold-400/20; }
+.item-card       { @apply flex bg-ink-100 border border-brand-200 overflow-hidden transition-colors duration-200 hover:border-gold-400/30; }
 .item-card.complete { @apply border-green-500/30; }
 .item-status-bar { @apply w-[3px] shrink-0 transition-colors duration-300; }
 .item-header     { @apply flex flex-1 cursor-pointer items-stretch; }
-.item-add-btn    { @apply w-12 flex items-center justify-center text-gold-400 text-xl transition-all duration-200 border-l border-ink-700 hover:bg-gold-400/10; }
-.item-form       { @apply border-t border-ink-700 p-4 bg-ink-900; }
+.item-add-btn    { @apply w-12 flex items-center justify-center text-gold-400 text-xl transition-all duration-200 border-l border-brand-200 hover:bg-gold-400/10; }
+.item-form       { @apply border-t border-brand-200 p-4 bg-white; }
 
 .contrib-label { @apply font-mono text-[9px] uppercase tracking-widest text-gold-400; }
-.contrib-input { @apply bg-ink-800 border border-ink-600 text-white text-sm px-3 py-2 outline-none w-full transition-colors duration-200 focus:border-green-500; }
+.contrib-input { @apply bg-white border border-brand-200 text-ink-800 text-sm px-3 py-2 outline-none w-full transition-colors duration-200 focus:border-green-500; }
 .contrib-btn   { @apply bg-green-600 text-white border-none font-mono text-[10px] uppercase tracking-widest px-4 py-2 cursor-pointer transition-all duration-200 hover:bg-green-500 whitespace-nowrap; }
 .contrib-btn:disabled { @apply opacity-50 cursor-not-allowed; }
-.contrib-row   { @apply flex items-center gap-2 bg-ink-800 border border-ink-700 px-3 py-2.5 hover:border-ink-600 transition-colors; }
+.contrib-row   { @apply flex items-center gap-2 bg-white border border-brand-200 px-3 py-2.5 hover:border-brand-400 transition-colors; }
 
 .icon-btn        { @apply w-7 h-7 flex items-center justify-center border text-xs cursor-pointer transition-all duration-150 shrink-0; }
-.icon-btn.edit   { @apply border-ink-600 text-ink-400 hover:border-gold-400 hover:text-gold-400; }
-.icon-btn.del    { @apply border-ink-600 text-ink-400 hover:border-crimson-400 hover:text-crimson-400; }
-.icon-btn.save   { @apply border-green-600 text-green-400 hover:bg-green-600 hover:text-white; }
-.icon-btn.cancel { @apply border-ink-600 text-ink-400 hover:border-ink-400; }
+.icon-btn.edit   { @apply border-brand-200 text-ink-500 hover:border-gold-400 hover:text-gold-400; }
+.icon-btn.del    { @apply border-brand-200 text-ink-500 hover:border-crimson-400 hover:text-crimson-400; }
+.icon-btn.save   { @apply border-green-600 text-green-600 hover:bg-green-600 hover:text-white; }
+.icon-btn.cancel { @apply border-brand-200 text-ink-400 hover:border-ink-400; }
 .icon-btn:disabled { @apply opacity-40 cursor-not-allowed; }
 
 .input-label { @apply font-mono text-[10px] uppercase tracking-widest text-gold-400; }
 .input-field {
-  @apply bg-ink-900 border border-ink-600 text-white font-mono text-sm px-3 py-2.5 outline-none w-full transition-colors duration-200 focus:border-gold-400;
+  @apply bg-ink-100 border border-brand-200 text-ink-800 font-mono text-sm px-3 py-2.5 outline-none w-full transition-colors duration-200 focus:border-gold-400;
   appearance: none;
 }
 select.input-field {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A017' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px;
 }
-.btn-gold   { @apply bg-gold-400 text-ink-900 border-none font-mono text-[11px] uppercase tracking-widest py-3 px-6 cursor-pointer font-medium transition-all duration-200 hover:bg-gold-200 disabled:opacity-50 disabled:cursor-not-allowed; }
+.btn-gold   { @apply bg-gold-400 text-white border-none font-mono text-[11px] uppercase tracking-widest py-3 px-6 cursor-pointer font-medium transition-all duration-200 hover:bg-gold-200 disabled:opacity-50 disabled:cursor-not-allowed; }
 .btn-danger { @apply bg-transparent text-crimson-400 border border-crimson-400/30 font-mono text-[10px] uppercase tracking-widest py-2 px-4 cursor-pointer transition-all duration-200 hover:bg-crimson-400 hover:text-white; }
-.admin-tab  { @apply font-mono text-[10px] uppercase tracking-widest px-4 py-3 bg-none border-none text-ink-400 cursor-pointer border-b-2 border-transparent -mb-px transition-all duration-200 whitespace-nowrap; }
+.admin-tab  { @apply font-mono text-[10px] uppercase tracking-widest px-4 py-3 bg-none border-none text-ink-500 cursor-pointer border-b-2 border-transparent -mb-px transition-all duration-200 whitespace-nowrap; }
 .admin-tab.active { @apply text-gold-400 border-gold-400; }
-.admin-tab:hover:not(.active) { @apply text-ink-200; }
+.admin-tab:hover:not(.active) { @apply text-ink-600; }
 
 .fade-enter-active,     .fade-leave-active      { transition: opacity 0.3s; }
 .fade-enter-from,       .fade-leave-to          { opacity: 0; }

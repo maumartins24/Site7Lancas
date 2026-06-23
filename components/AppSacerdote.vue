@@ -1,5 +1,5 @@
 <template>
-  <section id="sacerdote" class="relative py-24 md:py-32 bg-ink-900 overflow-hidden">
+  <section id="sacerdote" class="relative py-24 md:py-32 bg-white overflow-hidden">
 
     <!-- Padrão geométrico fundo -->
     <div class="absolute inset-0 adinkra-bg pointer-events-none" />
@@ -54,14 +54,14 @@
 
               <!-- 🔧 Substitua pelo <img> quando tiver a foto -->
               <!-- <img src="/images/sacerdote.jpg" alt="Rodrigo Bertozzi" class="w-full h-full object-cover object-top" /> -->
-              <div class="w-full h-full bg-gradient-to-b from-ink-700 to-ink-800 flex flex-col items-center justify-center gap-4">
+              <div class="w-full h-full bg-gradient-to-b from-ink-100 to-ink-200 flex flex-col items-center justify-center gap-4">
                 <div class="w-20 h-20 rounded-full border-2 border-gold-400/40 bg-gold-400/10 flex items-center justify-center">
                   <svg class="w-10 h-10 text-gold-400/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                   </svg>
                 </div>
                 <p class="text-gold-400/40 text-xs tracking-widest3 uppercase font-sans">Foto em breve</p>
-                <p class="text-ink-500 text-[0.65rem] font-mono">🔧 /images/sacerdote.jpg</p>
+                <p class="text-ink-400/50 text-[0.65rem] font-mono">🔧 /images/sacerdote.jpg</p>
               </div>
 
               <!-- Overlay inferior com nome -->
@@ -84,7 +84,7 @@
           <!-- Nome -->
           <div>
             <p class="section-label mb-3">Sacerdote</p>
-            <h2 class="font-serif text-5xl md:text-6xl font-black text-white leading-none">
+            <h2 class="font-serif text-5xl md:text-6xl font-black text-ink-800 leading-none">
               Rodrigo<br>
               <span class="text-gold-400 italic">Bertozzi</span>
             </h2>
@@ -101,11 +101,11 @@
 
           <!-- Texto bio -->
           <div class="space-y-4 font-serif">
-            <p class="text-lg text-ink-200 leading-relaxed">
+            <p class="text-lg text-ink-600 leading-relaxed">
               <!-- 🔧 Substituir pelo texto real do sacerdote -->
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
             </p>
-            <p class="text-base text-ink-400 leading-relaxed">
+            <p class="text-base text-ink-500 leading-relaxed">
               <!-- 🔧 Substituir pelo texto real -->
               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.
             </p>

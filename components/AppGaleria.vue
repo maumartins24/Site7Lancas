@@ -1,5 +1,5 @@
 <template>
-  <section id="galeria" class="py-24 md:py-28 bg-ink-900 overflow-hidden">
+  <section id="galeria" class="py-24 md:py-28 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
 
       <!-- CABEÇALHO -->
@@ -9,7 +9,7 @@
             <div class="kente-bar-thin w-8" />
             <span class="section-label text-gold-400">Nossa Jornada</span>
           </div>
-          <h2 class="font-serif text-4xl md:text-5xl font-black text-white">
+          <h2 class="font-serif text-4xl md:text-5xl font-black text-ink-800">
             Momentos<br>
             <span class="text-gold-400 italic">de Axé</span>
           </h2>
@@ -57,10 +57,10 @@
               class="w-full h-full flex items-center justify-center"
               :class="slide.bg"
             >
-              <span class="text-ink-500 text-sm uppercase tracking-widest">{{ slide.alt }}</span>
+              <span class="text-ink-400/60 text-sm uppercase tracking-widest">{{ slide.alt }}</span>
             </div>
 
-            <div class="absolute inset-0 bg-gradient-to-t from-ink-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-200/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </a>
         </div>
       </div>
@@ -73,7 +73,7 @@
             :key="i"
             @click="currentIndex = i"
             class="h-1 rounded-full transition-all duration-300"
-            :class="currentIndex === i ? 'w-8 bg-gold-400' : 'w-3 bg-ink-600'"
+            :class="currentIndex === i ? 'w-8 bg-gold-400' : 'w-3 bg-ink-200'"
             :aria-label="`Slide ${i + 1}`"
           />
         </div>
@@ -94,12 +94,12 @@
 
 <script setup lang="ts">
 const slides = [
-  { alt: 'Gira de Ogum',          src: '/images/insta1.jpg', bg: 'bg-ink-700' },
-  { alt: 'Estudo coletivo',        src: '/images/insta2.jpg', bg: 'bg-ink-800' },
-  { alt: 'Evento comunitário',     src: '/images/insta3.jpg', bg: 'bg-ink-700' },
-  { alt: 'Trabalho espiritual',    src: '/images/insta4.jpg', bg: 'bg-ink-800' },
-  { alt: 'Convívio da comunidade', src: '/images/insta5.jpg', bg: 'bg-ink-700' },
-  { alt: 'Nós',                    src: '/images/nos.jpg',    bg: 'bg-ink-800' },
+  { alt: 'Gira de Ogum',          src: '/images/insta1.jpg', bg: 'bg-ink-100' },
+  { alt: 'Estudo coletivo',        src: '/images/insta2.jpg', bg: 'bg-ink-200' },
+  { alt: 'Evento comunitário',     src: '/images/insta3.jpg', bg: 'bg-ink-100' },
+  { alt: 'Trabalho espiritual',    src: '/images/insta4.jpg', bg: 'bg-ink-200' },
+  { alt: 'Convívio da comunidade', src: '/images/insta5.jpg', bg: 'bg-ink-100' },
+  { alt: 'Nós',                    src: '/images/nos.jpg',    bg: 'bg-ink-200' },
 ]
 
 const currentIndex = ref(0)

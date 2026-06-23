@@ -1,5 +1,5 @@
 <template>
-  <section id="rifas" class="py-24 md:py-28 bg-ink-50 dark:bg-ink-900">
+  <section id="rifas" class="py-24 md:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
 
       <!-- CABEÇALHO -->
@@ -8,11 +8,11 @@
           <div class="kente-bar-thin w-8" />
           <span class="section-label">Apoie e Concorra</span>
         </div>
-        <h2 class="font-serif text-4xl md:text-5xl font-black text-ink-900 dark:text-white leading-tight">
+        <h2 class="font-serif text-4xl md:text-5xl font-black text-ink-800 leading-tight">
           Rifas &<br>
           <span class="text-gold-400 italic">Oportunidades 🎟️</span>
         </h2>
-        <p class="mt-5 text-ink-600 dark:text-ink-300 max-w-xl text-base md:text-lg leading-relaxed">
+        <p class="mt-5 text-ink-500 max-w-xl text-base md:text-lg leading-relaxed">
           Participe das nossas rifas internas e ajude a fortalecer o Terreiro enquanto concorre a prêmios especiais.
         </p>
       </div>
@@ -22,15 +22,15 @@
         <div
           v-for="rifa in rifas"
           :key="rifa.id"
-          class="relative bg-white dark:bg-ink-800 border"
+          class="relative bg-white border"
           :class="rifa.ativa
             ? 'border-gold-400/40 hover:border-gold-400'
-            : 'border-ink-100 dark:border-ink-700 opacity-70'"
+            : 'border-brand-200 opacity-70'"
         >
           <!-- Faixa lateral -->
           <div
             class="absolute left-0 top-0 bottom-0 w-1"
-            :class="rifa.ativa ? 'bg-gold-400' : 'bg-ink-300 dark:bg-ink-600'"
+            :class="rifa.ativa ? 'bg-gold-400' : 'bg-ink-200'"
           />
 
           <div class="p-7 pl-8">
@@ -39,36 +39,36 @@
               <span
                 class="text-[0.6rem] uppercase tracking-widest px-2.5 py-1 font-mono font-bold"
                 :class="rifa.ativa
-                  ? 'bg-ink-900 dark:bg-gold-400/10 text-gold-400 border border-gold-400/30'
-                  : 'bg-ink-100 dark:bg-ink-700 text-ink-400'"
+                  ? 'bg-gold-400/10 text-gold-400 border border-gold-400/30'
+                  : 'bg-ink-200 text-ink-400'"
               >
                 {{ rifa.ativa ? '● Ativa' : '◌ Em breve' }}
               </span>
             </div>
 
-            <h3 class="font-serif text-2xl font-bold text-ink-900 dark:text-white mb-2">
+            <h3 class="font-serif text-2xl font-bold text-ink-800 mb-2">
               {{ rifa.titulo }}
             </h3>
-            <p class="text-sm text-ink-500 dark:text-ink-400 mb-6 leading-relaxed">
+            <p class="text-sm text-ink-500 mb-6 leading-relaxed">
               {{ rifa.descricao }}
             </p>
 
             <!-- Detalhes em grid -->
             <div class="grid grid-cols-2 gap-3 mb-6">
-              <div class="p-3 bg-ink-50 dark:bg-ink-900">
+              <div class="p-3 bg-ink-100">
                 <p class="text-[0.6rem] uppercase tracking-widest text-gold-400 mb-1">Bilhete</p>
-                <p class="font-serif font-bold text-ink-900 dark:text-white">{{ rifa.valorBilhete }}</p>
+                <p class="font-serif font-bold text-ink-800">{{ rifa.valorBilhete }}</p>
               </div>
-              <div class="p-3 bg-ink-50 dark:bg-ink-900">
+              <div class="p-3 bg-ink-100">
                 <p class="text-[0.6rem] uppercase tracking-widest text-gold-400 mb-1">Encerra</p>
-                <p class="font-serif font-bold text-ink-900 dark:text-white text-sm">{{ rifa.dataEncerramento }}</p>
+                <p class="font-serif font-bold text-ink-800 text-sm">{{ rifa.dataEncerramento }}</p>
               </div>
             </div>
 
             <!-- Prêmio -->
             <div class="p-4 border-l-2 border-gold-400 bg-gold-400/5 mb-6">
               <p class="text-[0.6rem] uppercase tracking-widest text-gold-400 mb-1">🏆 Prêmio</p>
-              <p class="font-semibold text-ink-900 dark:text-white">{{ rifa.premio }}</p>
+              <p class="font-semibold text-ink-800">{{ rifa.premio }}</p>
             </div>
 
             <!-- Progresso -->
@@ -77,7 +77,7 @@
                 <span>{{ rifa.numerosVendidos }} bilhetes</span>
                 <span>{{ porcentagem(rifa) }}%</span>
               </div>
-              <div class="h-1 bg-ink-100 dark:bg-ink-700">
+              <div class="h-1 bg-ink-200">
                 <div
                   class="h-1 bg-gold-400 transition-all duration-700"
                   :style="{ width: `${porcentagem(rifa)}%` }"
@@ -99,7 +99,7 @@
             <button
               v-else
               disabled
-              class="w-full py-3 text-xs uppercase tracking-widest text-ink-400 border border-ink-200 dark:border-ink-700 cursor-not-allowed font-mono"
+              class="w-full py-3 text-xs uppercase tracking-widest text-ink-400 border border-brand-200 cursor-not-allowed font-mono"
             >
               Em breve
             </button>
@@ -107,7 +107,7 @@
         </div>
       </div>
 
-      <p class="mt-10 text-xs text-ink-400 dark:text-ink-600">
+      <p class="mt-10 text-xs text-ink-400">
         Rifas organizadas internamente pelo Terreiro. Dúvidas? Fale conosco no Instagram.
       </p>
     </div>
