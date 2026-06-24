@@ -622,6 +622,7 @@ onUnmounted(() => { unsubEv(); unsubTipos() })
 .event-date-col { @apply px-3 py-4 border-r border-brand-200 text-center flex flex-col justify-center; }
 .event-date-day { @apply font-serif text-2xl font-black text-ink-800 leading-none; }
 .event-date-month { @apply font-mono text-[9px] uppercase tracking-widest text-ink-400; }
+.event-type-badge { @apply inline-block font-mono text-[8px] uppercase tracking-widest px-2 py-0.5 mb-1.5; }
 .event-body { @apply py-3 px-4; }
 .event-name  { @apply font-serif text-lg font-bold text-ink-800 leading-tight mb-1; }
 .event-desc  { @apply text-xs text-ink-500 leading-relaxed; }

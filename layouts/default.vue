@@ -142,7 +142,7 @@
       </div>
       <div class="kente-bar-thin w-full" />
       <p class="text-center font-mono text-[10px] text-brand-400/60 py-4 tracking-widest uppercase">
-        © 2025 Terreiro Ogum 7 Lanças — Construindo caminhos, ajudando a comunidade.
+        © 2025–2026 Terreiro Ogum 7 Lanças — Construindo caminhos, ajudando a comunidade.
       </p>
     </footer>
   </div>

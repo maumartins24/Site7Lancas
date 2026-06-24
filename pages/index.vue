@@ -144,7 +144,5 @@ onUnmounted(() => unsubTipos())
 }
 .hero-label::before, .hero-label::after { content: ''; @apply h-px w-8 bg-gold-400/30; }
 
-.adinkra-bg {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cpolygon points='32,5 59,32 32,59 5,32' fill='none' stroke='%23D4A017' stroke-width='0.7' opacity='0.12'/%3E%3Cline x1='32' y1='5' x2='32' y2='59' stroke='%23C0392B' stroke-width='0.4' opacity='0.08'/%3E%3Cline x1='5' y1='32' x2='59' y2='32' stroke='%23C0392B' stroke-width='0.4' opacity='0.08'/%3E%3C/svg%3E");
-}
+
 </style>
